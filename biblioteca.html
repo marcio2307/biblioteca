@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
+
   <meta charset="UTF-8">
 
   <meta
@@ -9,12 +11,14 @@
   >
 
   <meta name="theme-color" content="#ffffff">
+
   <meta
     name="description"
     content="Biblioteca O Culta"
   >
 
   <title>Biblioteca O Culta</title>
+
 
   <style>
 
@@ -28,7 +32,9 @@
       box-sizing: border-box;
     }
 
+
     html {
+
       width: 100%;
       min-height: 100%;
 
@@ -40,7 +46,9 @@
       scroll-behavior: smooth;
     }
 
+
     body {
+
       margin: 0;
 
       width: 100%;
@@ -66,14 +74,20 @@
       overflow-x: hidden;
     }
 
+
     img {
+
       display: block;
+
       max-width: 100%;
     }
 
+
     a {
+
       -webkit-tap-highlight-color: transparent;
     }
+
 
 
     /* =========================================================
@@ -81,7 +95,9 @@
        ========================================================= */
 
     .page {
+
       width: 100%;
+
       min-height: 100vh;
       min-height: 100dvh;
 
@@ -91,21 +107,27 @@
       background: #ffffff;
     }
 
+
     .main {
+
       width: 100%;
+
       flex: 1;
 
       padding:
-        max(28px, env(safe-area-inset-top))
+        max(24px, env(safe-area-inset-top))
         0
         24px;
     }
 
+
     .container {
+
       width: min(100% - 32px, 1080px);
 
       margin: 0 auto;
     }
+
 
 
     /* =========================================================
@@ -113,21 +135,25 @@
        ========================================================= */
 
     .brand {
+
       display: flex;
+
       align-items: center;
 
       gap: 16px;
 
-      margin-bottom: 26px;
+      margin-bottom: 8px;
     }
 
+
     .brand-logo {
+
       width: 72px;
       height: 72px;
 
       flex: 0 0 72px;
 
-      object-fit: cover;
+      object-fit: contain;
 
       border-radius: 12px;
 
@@ -139,16 +165,21 @@
         0 5px 18px rgba(22, 78, 53, 0.10);
     }
 
+
     .brand-text {
+
       min-width: 0;
     }
 
+
     .brand-title {
+
       margin: 0;
 
       color: #174d35;
 
-      font-size: clamp(24px, 3vw, 31px);
+      font-size:
+        clamp(24px, 3vw, 31px);
 
       line-height: 1.15;
 
@@ -160,11 +191,184 @@
     }
 
 
+
+    /* =========================================================
+       ÁREA DA ANIMAÇÃO DOS LIVROS
+       FICA EXATAMENTE ABAIXO DO TÍTULO
+       ========================================================= */
+
+    .books-area {
+
+      width: 100%;
+
+      height: 92px;
+
+      margin-bottom: 12px;
+
+      position: relative;
+
+      overflow: hidden;
+
+      display: flex;
+
+      align-items: center;
+
+      background: #ffffff;
+
+      border-radius: 14px;
+    }
+
+
+    /* =========================================================
+       FADE NAS LATERAIS
+       ========================================================= */
+
+    .books-fade-left,
+    .books-fade-right {
+
+      position: absolute;
+
+      top: 0;
+
+      width: 55px;
+
+      height: 100%;
+
+      z-index: 5;
+
+      pointer-events: none;
+    }
+
+
+    .books-fade-left {
+
+      left: 0;
+
+      background:
+        linear-gradient(
+          to right,
+          #ffffff 0%,
+          rgba(255,255,255,0.92) 30%,
+          rgba(255,255,255,0) 100%
+        );
+    }
+
+
+    .books-fade-right {
+
+      right: 0;
+
+      background:
+        linear-gradient(
+          to left,
+          #ffffff 0%,
+          rgba(255,255,255,0.92) 30%,
+          rgba(255,255,255,0) 100%
+        );
+    }
+
+
+
+    /* =========================================================
+       MARQUEE
+       ========================================================= */
+
+    .books-marquee {
+
+      display: flex;
+
+      width: max-content;
+
+      animation:
+        booksMove
+        32s
+        linear
+        infinite;
+    }
+
+
+    .books-track {
+
+      display: flex;
+
+      align-items: center;
+
+      gap: 12px;
+
+      padding: 0 8px;
+    }
+
+
+
+    /* =========================================================
+       CAPAS
+       ========================================================= */
+
+    .books-track img {
+
+      width: 55px;
+
+      height: 78px;
+
+      flex: 0 0 55px;
+
+      object-fit: cover;
+
+      border-radius: 8px;
+
+      background: #ffffff;
+
+      border: 1px solid #d7e8de;
+
+      box-shadow:
+        0 4px 10px rgba(23, 77, 53, 0.16);
+
+      transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease;
+    }
+
+
+    .books-track img:hover {
+
+      transform:
+        translateY(-4px)
+        scale(1.06);
+
+      box-shadow:
+        0 8px 18px rgba(23, 77, 53, 0.22);
+    }
+
+
+
+    /* =========================================================
+       ANIMAÇÃO INFINITA
+       ========================================================= */
+
+    @keyframes booksMove {
+
+      from {
+
+        transform:
+          translateX(0);
+      }
+
+      to {
+
+        transform:
+          translateX(-50%);
+      }
+
+    }
+
+
+
     /* =========================================================
        CARD PRINCIPAL
        ========================================================= */
 
     .library {
+
       width: 100%;
 
       overflow: hidden;
@@ -181,14 +385,17 @@
     }
 
 
+
     /* =========================================================
        CABEÇALHO DOS LINKS
        ========================================================= */
 
     .section-header {
+
       min-height: 70px;
 
       display: flex;
+
       align-items: center;
 
       gap: 14px;
@@ -202,13 +409,16 @@
       border-bottom: 1px solid #d9e5de;
     }
 
+
     .section-icon {
+
       width: 36px;
       height: 36px;
 
       flex: 0 0 36px;
 
       display: grid;
+
       place-items: center;
 
       border-radius: 9px;
@@ -222,13 +432,17 @@
       line-height: 1;
     }
 
+
     .section-info {
+
       min-width: 0;
 
       flex: 1;
     }
 
+
     .section-title {
+
       display: block;
 
       color: #174d35;
@@ -240,7 +454,9 @@
       font-weight: 700;
     }
 
+
     .section-subtitle {
+
       display: block;
 
       margin-top: 3px;
@@ -252,8 +468,11 @@
       line-height: 1.25;
     }
 
+
     .count {
+
       min-width: 32px;
+
       height: 32px;
 
       padding: 0 9px;
@@ -261,6 +480,7 @@
       flex: 0 0 auto;
 
       display: grid;
+
       place-items: center;
 
       border-radius: 999px;
@@ -275,20 +495,25 @@
     }
 
 
+
     /* =========================================================
-       LISTA
+       LISTA DOS LINKS
        ========================================================= */
 
     .links {
+
       padding: 8px;
     }
 
+
     .link {
+
       width: 100%;
 
       min-height: 62px;
 
       display: flex;
+
       align-items: center;
 
       padding: 10px 14px;
@@ -319,7 +544,9 @@
       touch-action: manipulation;
     }
 
+
     .doc-icon {
+
       width: 34px;
 
       flex: 0 0 34px;
@@ -331,13 +558,16 @@
       line-height: 1;
     }
 
+
     .link-label {
+
       min-width: 0;
 
       overflow-wrap: anywhere;
 
       font-weight: 500;
     }
+
 
 
     /* =========================================================
@@ -347,6 +577,7 @@
     @media (hover: hover) and (pointer: fine) {
 
       .link:hover {
+
         background: #f0f8f4;
 
         color: #0e5a38;
@@ -359,11 +590,14 @@
           0 3px 10px rgba(23, 107, 69, 0.06);
       }
 
+
       .link:hover .doc-icon {
+
         color: #0e5a38;
       }
 
     }
+
 
 
     /* =========================================================
@@ -371,6 +605,7 @@
        ========================================================= */
 
     .link:active {
+
       background: #eaf5ef;
 
       color: #0e5a38;
@@ -378,7 +613,9 @@
       border-color: #c7dfd0;
     }
 
+
     .link:focus-visible {
+
       outline: 2px solid #176b45;
 
       outline-offset: -2px;
@@ -387,30 +624,38 @@
     }
 
 
+
     /* =========================================================
-       CELULARES
+       CELULAR
        ========================================================= */
 
     @media (max-width: 480px) {
 
       .container {
+
         width: calc(100% - 20px);
       }
 
+
       .main {
+
         padding-top:
-          max(18px, env(safe-area-inset-top));
+          max(16px, env(safe-area-inset-top));
 
         padding-bottom: 18px;
       }
 
+
       .brand {
+
         gap: 12px;
 
-        margin-bottom: 18px;
+        margin-bottom: 4px;
       }
 
+
       .brand-logo {
+
         width: 58px;
         height: 58px;
 
@@ -419,15 +664,70 @@
         border-radius: 10px;
       }
 
+
       .brand-title {
+
         font-size: 22px;
       }
 
+
+
+      /* LIVROS NO CELULAR */
+
+      .books-area {
+
+        height: 70px;
+
+        margin-bottom: 10px;
+
+        border-radius: 10px;
+      }
+
+
+      .books-track {
+
+        gap: 9px;
+
+        padding: 0 6px;
+      }
+
+
+      .books-track img {
+
+        width: 42px;
+
+        height: 60px;
+
+        flex-basis: 42px;
+
+        border-radius: 6px;
+      }
+
+
+      .books-fade-left,
+      .books-fade-right {
+
+        width: 35px;
+      }
+
+
+      .books-marquee {
+
+        animation-duration: 42s;
+      }
+
+
+
+      /* CARD */
+
       .library {
+
         border-radius: 12px;
       }
 
+
       .section-header {
+
         min-height: 66px;
 
         gap: 10px;
@@ -437,18 +737,25 @@
         border-left-width: 5px;
       }
 
+
       .section-icon {
+
         width: 34px;
+
         height: 34px;
 
         flex-basis: 34px;
       }
 
+
       .links {
+
         padding: 5px;
       }
 
+
       .link {
+
         min-height: 58px;
 
         padding: 9px 10px;
@@ -458,7 +765,9 @@
         border-radius: 8px;
       }
 
+
       .doc-icon {
+
         width: 32px;
 
         flex-basis: 32px;
@@ -467,56 +776,81 @@
     }
 
 
+
     /* =========================================================
-       TABLETS
+       TABLET
        ========================================================= */
 
-    @media (min-width: 601px) and (max-width: 1024px) {
+    @media (min-width: 481px) and (max-width: 1024px) {
 
       .container {
+
         width: 92%;
 
         max-width: 900px;
       }
 
+
       .main {
-        padding-top: 34px;
+
+        padding-top: 30px;
       }
 
-      .brand {
-        margin-bottom: 26px;
+
+      .books-area {
+
+        height: 90px;
       }
 
-      .library {
-        border-radius: 16px;
+
+      .books-track img {
+
+        width: 58px;
+
+        height: 82px;
+
+        flex-basis: 58px;
       }
+
 
       .link {
+
         min-height: 64px;
       }
 
     }
 
 
+
     /* =========================================================
-       COMPUTADORES GRANDES
+       COMPUTADOR GRANDE
        ========================================================= */
 
     @media (min-width: 1200px) {
 
       .main {
-        padding-top: 42px;
+
+        padding-top: 38px;
       }
 
-      .brand {
-        margin-bottom: 28px;
+
+      .books-area {
+
+        height: 100px;
       }
 
-      .library {
-        border-radius: 16px;
+
+      .books-track img {
+
+        width: 62px;
+
+        height: 88px;
+
+        flex-basis: 62px;
       }
 
     }
+
 
 
     /* =========================================================
@@ -526,33 +860,48 @@
     @media (prefers-reduced-motion: reduce) {
 
       html {
+
         scroll-behavior: auto;
       }
 
-      .link {
+
+      .books-marquee {
+
+        animation-play-state: paused;
+      }
+
+
+      .link,
+      .books-track img {
+
         transition: none;
       }
 
     }
 
   </style>
+
 </head>
 
 
 <body>
 
+
   <div class="page">
 
+
     <main class="main">
+
 
       <div class="container">
 
 
-        <!-- ================================================
+        <!-- =====================================================
              TÍTULO
-             ================================================ -->
+             ===================================================== -->
 
         <header class="brand">
+
 
           <img
             class="brand-logo"
@@ -563,6 +912,7 @@
             decoding="async"
           >
 
+
           <div class="brand-text">
 
             <h1 class="brand-title">
@@ -571,12 +921,298 @@
 
           </div>
 
+
         </header>
 
 
-        <!-- ================================================
+
+        <!-- =====================================================
+             ANIMAÇÃO DAS CAPAS
+             FICA NO LUGAR DOS "X" DA IMAGEM
+             ===================================================== -->
+
+        <div
+          class="books-area"
+          aria-label="Livros da Biblioteca O Culta"
+        >
+
+
+          <!-- FADE ESQUERDO -->
+
+          <div class="books-fade-left"></div>
+
+
+          <!-- FADE DIREITO -->
+
+          <div class="books-fade-right"></div>
+
+
+          <!-- =================================================
+               MARQUEE
+               ================================================= -->
+
+          <div class="books-marquee">
+
+
+            <div class="books-track">
+
+
+              <!-- PRIMEIRO GRUPO -->
+
+              <img
+                src="https://biblioteca-secreta.vercel.app/books/0.jpg"
+                alt="Livro"
+                loading="eager"
+              >
+
+              <img
+                src="https://biblioteca-secreta.vercel.app/books/1.jpg"
+                alt="Livro"
+              >
+
+              <img
+                src="https://biblioteca-secreta.vercel.app/books/2.jpg"
+                alt="Livro"
+              >
+
+              <img
+                src="https://biblioteca-secreta.vercel.app/books/3.png"
+                alt="Livro"
+              >
+
+              <img
+                src="https://biblioteca-secreta.vercel.app/books/4.jpg"
+                alt="Livro"
+              >
+
+              <img
+                src="https://biblioteca-secreta.vercel.app/books/5.jpg"
+                alt="Livro"
+              >
+
+              <img
+                src="https://biblioteca-secreta.vercel.app/books/6.jpg"
+                alt="Livro"
+              >
+
+              <img
+                src="https://biblioteca-secreta.vercel.app/books/7.png"
+                alt="Livro"
+              >
+
+              <img
+                src="https://biblioteca-secreta.vercel.app/books/8.jpg"
+                alt="Livro"
+              >
+
+              <img
+                src="https://biblioteca-secreta.vercel.app/books/9.png"
+                alt="Livro"
+              >
+
+              <img
+                src="https://biblioteca-secreta.vercel.app/books/10.png"
+                alt="Livro"
+              >
+
+
+              <!-- SEGUNDO GRUPO -->
+
+              <img
+                src="https://biblioteca-secreta.vercel.app/books/17.jpg"
+                alt="Livro"
+              >
+
+              <img
+                src="https://biblioteca-secreta.vercel.app/books/18.png"
+                alt="Livro"
+              >
+
+              <img
+                src="https://biblioteca-secreta.vercel.app/books/19.webp"
+                alt="Livro"
+              >
+
+              <img
+                src="https://biblioteca-secreta.vercel.app/books/20.png"
+                alt="Livro"
+              >
+
+              <img
+                src="https://biblioteca-secreta.vercel.app/books/21.jpg"
+                alt="Livro"
+              >
+
+              <img
+                src="https://biblioteca-secreta.vercel.app/books/22.jpg"
+                alt="Livro"
+              >
+
+              <img
+                src="https://biblioteca-secreta.vercel.app/books/23.jpg"
+                alt="Livro"
+              >
+
+              <img
+                src="https://biblioteca-secreta.vercel.app/books/24.png"
+                alt="Livro"
+              >
+
+              <img
+                src="https://biblioteca-secreta.vercel.app/books/25.jpg"
+                alt="Livro"
+              >
+
+              <img
+                src="https://biblioteca-secreta.vercel.app/books/26.jpg"
+                alt="Livro"
+              >
+
+
+              <!-- =================================================
+                   DUPLICAÇÃO PARA LOOP INFINITO
+                   ================================================= -->
+
+
+              <img
+                src="https://biblioteca-secreta.vercel.app/books/0.jpg"
+                alt=""
+                aria-hidden="true"
+              >
+
+              <img
+                src="https://biblioteca-secreta.vercel.app/books/1.jpg"
+                alt=""
+                aria-hidden="true"
+              >
+
+              <img
+                src="https://biblioteca-secreta.vercel.app/books/2.jpg"
+                alt=""
+                aria-hidden="true"
+              >
+
+              <img
+                src="https://biblioteca-secreta.vercel.app/books/3.png"
+                alt=""
+                aria-hidden="true"
+              >
+
+              <img
+                src="https://biblioteca-secreta.vercel.app/books/4.jpg"
+                alt=""
+                aria-hidden="true"
+              >
+
+              <img
+                src="https://biblioteca-secreta.vercel.app/books/5.jpg"
+                alt=""
+                aria-hidden="true"
+              >
+
+              <img
+                src="https://biblioteca-secreta.vercel.app/books/6.jpg"
+                alt=""
+                aria-hidden="true"
+              >
+
+              <img
+                src="https://biblioteca-secreta.vercel.app/books/7.png"
+                alt=""
+                aria-hidden="true"
+              >
+
+              <img
+                src="https://biblioteca-secreta.vercel.app/books/8.jpg"
+                alt=""
+                aria-hidden="true"
+              >
+
+              <img
+                src="https://biblioteca-secreta.vercel.app/books/9.png"
+                alt=""
+                aria-hidden="true"
+              >
+
+              <img
+                src="https://biblioteca-secreta.vercel.app/books/10.png"
+                alt=""
+                aria-hidden="true"
+              >
+
+
+              <img
+                src="https://biblioteca-secreta.vercel.app/books/17.jpg"
+                alt=""
+                aria-hidden="true"
+              >
+
+              <img
+                src="https://biblioteca-secreta.vercel.app/books/18.png"
+                alt=""
+                aria-hidden="true"
+              >
+
+              <img
+                src="https://biblioteca-secreta.vercel.app/books/19.webp"
+                alt=""
+                aria-hidden="true"
+              >
+
+              <img
+                src="https://biblioteca-secreta.vercel.app/books/20.png"
+                alt=""
+                aria-hidden="true"
+              >
+
+              <img
+                src="https://biblioteca-secreta.vercel.app/books/21.jpg"
+                alt=""
+                aria-hidden="true"
+              >
+
+              <img
+                src="https://biblioteca-secreta.vercel.app/books/22.jpg"
+                alt=""
+                aria-hidden="true"
+              >
+
+              <img
+                src="https://biblioteca-secreta.vercel.app/books/23.jpg"
+                alt=""
+                aria-hidden="true"
+              >
+
+              <img
+                src="https://biblioteca-secreta.vercel.app/books/24.png"
+                alt=""
+                aria-hidden="true"
+              >
+
+              <img
+                src="https://biblioteca-secreta.vercel.app/books/25.jpg"
+                alt=""
+                aria-hidden="true"
+              >
+
+              <img
+                src="https://biblioteca-secreta.vercel.app/books/26.jpg"
+                alt=""
+                aria-hidden="true"
+              >
+
+
+            </div>
+
+          </div>
+
+        </div>
+
+
+
+        <!-- =====================================================
              BIBLIOTECA
-             ================================================ -->
+             ===================================================== -->
 
         <section
           class="library"
@@ -588,6 +1224,7 @@
 
           <div class="section-header">
 
+
             <div
               class="section-icon"
               aria-hidden="true"
@@ -598,13 +1235,16 @@
 
             <div class="section-info">
 
+
               <strong class="section-title">
                 Links
               </strong>
 
+
               <span class="section-subtitle">
                 4 aulas
               </span>
+
 
             </div>
 
@@ -616,12 +1256,14 @@
               4
             </span>
 
+
           </div>
 
 
-          <!-- ================================================
+
+          <!-- =================================================
                LINKS
-               ================================================ -->
+               ================================================= -->
 
           <nav
             class="links"
@@ -653,6 +1295,7 @@
             </a>
 
 
+
             <!-- PARTE 2 -->
 
             <a
@@ -677,6 +1320,7 @@
             </a>
 
 
+
             <!-- PARTE 3 -->
 
             <a
@@ -699,6 +1343,7 @@
               </span>
 
             </a>
+
 
 
             <!-- PARTE 4 -->
@@ -727,7 +1372,9 @@
 
           </nav>
 
+
         </section>
+
 
       </div>
 
@@ -735,5 +1382,7 @@
 
   </div>
 
+
 </body>
+
 </html>
